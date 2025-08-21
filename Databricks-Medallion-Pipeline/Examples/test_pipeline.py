@@ -146,9 +146,13 @@ def test_bronze_layer_basic():
         if parent_dir not in sys.path:
             sys.path.append(parent_dir)
         
-        # Test importing Bronze modules
-        from Bronze.bronze_ingest_prices import fetch_price_data_from_yfinance, clean_and_standardize_price_data
-        from Bronze.bronze_ingest_fundamentals import fetch_fundamental_data_from_yfinance, clean_and_standardize_fundamental_data
+        # Test importing Bronze modules  
+        sys.path.append(os.path.join(parent_dir, 'Bronze'))
+        sys.path.append(os.path.join(parent_dir, 'Silver'))
+        sys.path.append(os.path.join(parent_dir, 'Gold'))
+        
+        from bronze_ingest_prices import fetch_price_data_from_yfinance, clean_and_standardize_price_data
+        from bronze_ingest_fundamentals import fetch_fundamental_data_from_yfinance, clean_and_standardize_fundamental_data
         
         print("✅ Bronze layer modules imported successfully")
         
